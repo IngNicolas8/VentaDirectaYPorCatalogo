@@ -1,0 +1,9 @@
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\bin\Debug\netstandard2.0\Clases.deps.json
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\bin\Debug\netstandard2.0\Clases.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\bin\Debug\netstandard2.0\Clases.pdb
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\obj\Debug\netstandard2.0\Clases.csprojAssemblyReference.cache
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\obj\Debug\netstandard2.0\Clases.csproj.CoreCompileInputs.cache
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\obj\Debug\netstandard2.0\Clases.AssemblyInfoInputs.cache
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\obj\Debug\netstandard2.0\Clases.AssemblyInfo.cs
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\obj\Debug\netstandard2.0\Clases.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\Clases\obj\Debug\netstandard2.0\Clases.pdb

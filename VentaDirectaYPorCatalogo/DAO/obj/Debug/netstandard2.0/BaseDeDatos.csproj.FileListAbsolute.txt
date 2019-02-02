@@ -1,0 +1,12 @@
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.csprojAssemblyReference.cache
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.csproj.CoreCompileInputs.cache
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.AssemblyInfoInputs.cache
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.AssemblyInfo.cs
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\BaseDeDatos.deps.json
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\BaseDeDatos.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\BaseDeDatos.pdb
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\System.Configuration.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\System.Security.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.csproj.CopyComplete
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.pdb

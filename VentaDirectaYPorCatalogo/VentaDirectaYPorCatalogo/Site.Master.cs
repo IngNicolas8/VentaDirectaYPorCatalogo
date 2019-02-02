@@ -13,5 +13,15 @@ namespace VentaDirectaYPorCatalogo
         {
 
         }
+
+        protected void LbIniciarSession_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        protected void lbRegistrarUsuario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RegistrarUsuario.aspx");
+        }
     }
 }

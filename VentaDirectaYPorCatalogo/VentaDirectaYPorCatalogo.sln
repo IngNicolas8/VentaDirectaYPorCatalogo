@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VentaDirectaYPorCatalogo", "VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo.csproj", "{F5AEE1C5-3C82-4049-8172-3E0CD53E04A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseDeDatos", "DAO\BaseDeDatos.csproj", "{F0B17945-B351-4874-AB29-5F349D519A2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseDeDatos", "DAO\BaseDeDatos.csproj", "{F0B17945-B351-4874-AB29-5F349D519A2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clases", "Clases\Clases.csproj", "{3F07CD2C-A979-407A-A9C2-95755EA571A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clases", "Clases\Clases.csproj", "{3F07CD2C-A979-407A-A9C2-95755EA571A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

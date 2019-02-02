@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title>Venta Directa y por Catalogo</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -15,7 +15,8 @@
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -56,6 +57,10 @@
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
                     </ul>
                 </div>
+                <div>
+                    <asp:LinkButton ID="lbIniciarSession" runat="server" OnClick="LbIniciarSession_Click">Iniciar sessión</asp:LinkButton>
+                    <asp:LinkButton ID="lbRegistrarUsuario" runat="server" OnClick="lbRegistrarUsuario_Click">Registrar Usuario</asp:LinkButton>
+                </div>
             </div>
         </div>
         <div class="container body-content">
@@ -63,7 +68,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Sitio web de venta directa y por catalogo</p>
             </footer>
         </div>
 
