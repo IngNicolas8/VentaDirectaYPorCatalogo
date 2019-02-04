@@ -10,3 +10,5 @@ C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\n
 C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.csproj.CopyComplete
 C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.dll
 C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\obj\Debug\netstandard2.0\BaseDeDatos.pdb
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\Clases.dll
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\DAO\bin\Debug\netstandard2.0\Clases.pdb

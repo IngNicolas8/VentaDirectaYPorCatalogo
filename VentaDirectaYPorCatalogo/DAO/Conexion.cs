@@ -25,6 +25,7 @@ namespace BaseDeDatos
             try
             {
                 Conexion = new SqlConnection(ConfigurationManager.ConnectionStrings["conexion"].ToString());
+                Conexion.Open();
             }
             catch (Exception)
             {
@@ -32,6 +33,12 @@ namespace BaseDeDatos
             }
         }
 
-        
+        /// <summary>
+        /// Cierrar la conexion
+        /// </summary>
+        public static void Cerrar()
+        {
+            Conexion.Close();
+        }
     }
 }

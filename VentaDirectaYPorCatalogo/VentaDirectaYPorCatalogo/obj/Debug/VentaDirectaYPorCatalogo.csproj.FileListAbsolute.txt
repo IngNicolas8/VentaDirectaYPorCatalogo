@@ -188,3 +188,4 @@ C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\VentaDirectaYPo
 C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\bin\Clases.dll
 C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\bin\Clases.pdb
 C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\bin\BaseDeDatos.pdb
+C:\Users\Nicol\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\VentaDirectaYPorCatalogo\bin\System.Data.SqlClient.dll

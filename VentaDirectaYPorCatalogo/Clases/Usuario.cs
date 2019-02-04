@@ -21,5 +21,21 @@ namespace Clases
         /// Contraseña del usuario
         /// </summary>
         public string Contraseña { get => contraseña; set => contraseña = value; }
+
+        /// <summary>
+        /// constructor sin parametros
+        /// </summary>
+        public Usuario() { }
+
+        /// <summary>
+        /// Constructor con parametros
+        /// </summary>
+        /// <param name="usuario">usuario</param>
+        /// <param name="pass">cpntraseña</param>
+        public Usuario(string usuario, string pass)
+        {
+            User = usuario;
+            Contraseña = pass;
+        }
     }
 }

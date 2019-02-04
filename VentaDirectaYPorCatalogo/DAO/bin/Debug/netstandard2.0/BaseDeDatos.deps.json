@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "BaseDeDatos/1.0.0": {
         "dependencies": {
+          "Clases": "1.0.0",
           "NETStandard.Library": "2.0.3",
           "System.Data.SqlClient": "4.6.0",
           "System.Configuration": "4.0.0.0"
@@ -107,6 +108,11 @@
         },
         "runtime": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
+        }
+      },
+      "Clases/1.0.0": {
+        "runtime": {
+          "Clases.dll": {}
         }
       },
       "System.Configuration/4.0.0.0": {
@@ -233,6 +239,11 @@
       "sha512": "sha512-aQnlUgT+JK/81iv62zE7hR7FZJOgKbMNuxlK5l6u3CchtZ2FG5LIMnedmvVgT1phTnX4qWCUIoyfGTQlxrLNog==",
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
+    },
+    "Clases/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "System.Configuration/4.0.0.0": {
       "type": "reference",
