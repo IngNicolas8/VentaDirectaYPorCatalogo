@@ -214,6 +214,16 @@
             "rid": "win"
           }
         }
+      },
+      "Clases/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Clases.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Clases.dll": {}
+        }
       }
     }
   },
@@ -793,10 +803,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Clases/1.0.0": {
+      "type": "project",
+      "path": "../Clases/Clases.csproj",
+      "msbuildProject": "../Clases/Clases.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Clases >= 1.0.0",
       "NETStandard.Library >= 2.0.3",
       "System.Data.SqlClient >= 4.6.0"
     ]
@@ -830,7 +846,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Nicol\\VentaDirectaYPorCatalogo\\VentaDirectaYPorCatalogo\\Clases\\Clases.csproj": {
+              "projectPath": "C:\\Users\\Nicol\\VentaDirectaYPorCatalogo\\VentaDirectaYPorCatalogo\\Clases\\Clases.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
