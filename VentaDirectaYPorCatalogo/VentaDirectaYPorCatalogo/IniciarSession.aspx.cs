@@ -21,19 +21,24 @@ namespace VentaDirectaYPorCatalogo
         {
             try
             {
-                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text));
+                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text).ToLower());
                 if(new OrganizarUsuario().IniciarSession(usuario))
                 {
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario inicio sessión correctamente');", true);
                     Session["Session"] = true;
+                    Response.Redirect("Defaul.aspx");
                 }
                 else
                 {
+                    txtContraseña.Text = "";
+                    txtUsuario.Text = "";
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario no pudo iniciar sessión correctamente');", true);
                 }
             }
             catch(Exception ex)
             {
+                txtContraseña.Text = "";
+                txtUsuario.Text = "";
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario no pudo iniciar sessión correctamente');", true);
             }
         }

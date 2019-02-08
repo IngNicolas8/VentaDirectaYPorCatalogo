@@ -17,7 +17,7 @@
             <asp:Label ID="lblContraseña" runat="server" Text="Contraseña"></asp:Label>
         </div>
         <div class="col-md-3">
-            <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control"></asp:TextBox>
+            <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" ValidationGroup="1" TextMode="Password"></asp:TextBox>
         </div>
         <div class="col-md-4">
             <asp:RequiredFieldValidator ID="rfvContraseña" runat="server" ErrorMessage="Debe ingresar una contraseña valida" Display="Dynamic" ValidationGroup="1" ControlToValidate="txtContraseña" ForeColor="Red"></asp:RequiredFieldValidator><br />

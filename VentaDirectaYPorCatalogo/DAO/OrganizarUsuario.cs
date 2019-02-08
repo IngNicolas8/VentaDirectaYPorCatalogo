@@ -50,21 +50,22 @@ namespace BaseDeDatos
                 ClaseConexion.Conectar();
                 comando.Connection = ClaseConexion.Conexion;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT * from Usuarios where usuario like '@usuario' AND password like '@contraseña'";
+                comando.CommandText = "SELECT usuario from Usuarios where usuario like @usuario AND contraseña like @contraseña";
                 comando.Parameters.AddWithValue("@usuario", usuario.User);
                 comando.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
                 SqlDataReader lector = comando.ExecuteReader();
-                comando.Connection.Close();
                 if (lector.HasRows)
                 {
+                    comando.Connection.Close();
                     return true;
                 }
                 else
                 {
+                    comando.Connection.Close();
                     return false;
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
                 ClaseConexion.Conexion.Close();
                 return false;
