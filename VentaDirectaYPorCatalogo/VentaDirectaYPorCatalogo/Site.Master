@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="VentaDirectaYPorCatalogo.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="false" CodeBehind="Site.master.cs" Inherits="VentaDirectaYPorCatalogo.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -55,11 +55,12 @@
                         <li><a runat="server" href="~/">Inicio</a></li>
                         <li><a runat="server" href="~/About">Acerca de</a></li>
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
+                        <li><a runat="server" href="~/RegistrarUsuario.aspx">Registrar usuario</a></li>
+                        <li><a runat="server" href="~/ModificarEliminarUsuario.aspx">Modificar Usuario</a></li>
                     </ul>
                 </div>
-                <div>
+                <div class="navbar-right">
                     <asp:LinkButton ID="lbIniciarSession" runat="server" OnClick="LbIniciarSession_Click">Iniciar sessión</asp:LinkButton>
-                    <asp:LinkButton ID="lbRegistrarUsuario" runat="server" OnClick="lbRegistrarUsuario_Click">Registrar Usuario</asp:LinkButton>
                 </div>
             </div>
         </div>

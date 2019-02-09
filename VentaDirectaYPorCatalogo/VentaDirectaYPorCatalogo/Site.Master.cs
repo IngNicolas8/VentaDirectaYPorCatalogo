@@ -11,14 +11,7 @@ namespace VentaDirectaYPorCatalogo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Session"] != null  && (bool)Session["Session"])
-            {
-                lbIniciarSession.Text = "Cerrar sessión";
-            }
-            else
-            {
-                lbIniciarSession.Text = "Iniciar sessión";
-            }
+            
         }
 
         protected void LbIniciarSession_Click(object sender, EventArgs e)
@@ -29,14 +22,9 @@ namespace VentaDirectaYPorCatalogo
             }
             else
             {
-                Session["Session"] = false;
+                Session["Session"] = null;
                 lbIniciarSession.Text = "Iniciar sessión";
             }
-        }
-        
-        protected void lbRegistrarUsuario_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("RegistrarUsuario.aspx");
         }
     }
 }

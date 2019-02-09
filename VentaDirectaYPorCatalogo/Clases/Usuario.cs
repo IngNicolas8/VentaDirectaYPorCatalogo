@@ -11,6 +11,7 @@ namespace Clases
     {
         private string user;
         private string contraseña;
+        private string rol;
 
         /// <summary>
         /// Nombre de usuario
@@ -21,6 +22,11 @@ namespace Clases
         /// Contraseña del usuario
         /// </summary>
         public string Contraseña { get => contraseña; set => contraseña = value; }
+
+        /// <summary>
+        /// Rol del usuario
+        /// </summary>
+        public string Rol { get => rol; set => rol = value; }
 
         /// <summary>
         /// constructor sin parametros

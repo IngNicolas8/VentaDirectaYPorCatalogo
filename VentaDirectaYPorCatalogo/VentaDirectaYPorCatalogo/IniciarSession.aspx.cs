@@ -12,33 +12,65 @@ namespace VentaDirectaYPorCatalogo
 {
     public partial class IniciarSession : System.Web.UI.Page
     {
+        LinkButton lbIniciarSession;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lbIniciarSession = (LinkButton)Master.FindControl("lbIniciarSession");
+            if (!Page.IsPostBack)
+            {
+                if (Session["Session"] != null && Session["Usuario"] !=null)
+                {
+                    lbIniciarSession.Text = "Cerrar sessión";
+                }
+                else
+                {
+                    lbIniciarSession.Text = "Iniciar sessión";
+                }
+            }
+            else
+            {
+                if (Session["Session"] != null && Session["Usuario"] != null)
+                {
+                    lbIniciarSession.Text = "Cerrar sessión";
+                }
+                else
+                {
+                    lbIniciarSession.Text = "Iniciar sessión";
+                }
+            }
         }
 
         protected void BtnIniciar_Click(object sender, EventArgs e)
         {
+            LinkButton lbIniciarSession = (LinkButton)Master.FindControl("lbIniciarSession");
             try
             {
                 Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text).ToLower());
-                if(new OrganizarUsuario().IniciarSession(usuario))
+                OrganizarUsuario organizacionUsuario = new OrganizarUsuario();
+                string rol = organizacionUsuario.IniciarSession(usuario);
+                if(rol != "desconocido")
                 {
+                    lbIniciarSession.Text = "Cerrar session";
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario inicio sessión correctamente');", true);
-                    Session["Session"] = true;
-                    Response.Redirect("Defaul.aspx");
+                    Session["Session"] = rol;
+                    organizacionUsuario.BuscarUsuario(ref usuario);
+                    Session["Usuario"] = usuario;
                 }
                 else
                 {
                     txtContraseña.Text = "";
                     txtUsuario.Text = "";
+                    Session["Session"] = rol;
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario no pudo iniciar sessión correctamente');", true);
                 }
+                //Response.Redirect("Default.aspx");
             }
             catch(Exception ex)
             {
                 txtContraseña.Text = "";
                 txtUsuario.Text = "";
+                Session["Session"] = "desconocido";
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario no pudo iniciar sessión correctamente');", true);
             }
         }
