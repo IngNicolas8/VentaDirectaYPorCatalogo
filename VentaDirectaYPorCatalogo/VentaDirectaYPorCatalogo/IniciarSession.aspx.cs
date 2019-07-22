@@ -7,25 +7,30 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Clases;
 
 namespace VentaDirectaYPorCatalogo
 {
     public partial class IniciarSession : System.Web.UI.Page
     {
         LinkButton lbIniciarSession;
-
+        LinkButton lblNombreDelUsuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             lbIniciarSession = (LinkButton)Master.FindControl("lbIniciarSession");
+            lblNombreDelUsuario = (LinkButton)Master.FindControl("lblNombreDelUsuario");
             if (!Page.IsPostBack)
             {
-                if (Session["Session"] != null && Session["Usuario"] !=null)
+                if (Session["Session"] != null && Session["Usuario"] != null)
                 {
                     lbIniciarSession.Text = "Cerrar sessión";
+                    var usuario = (Usuario)Session["Usuario"];
+                    lblNombreDelUsuario.Text = usuario.User;
                 }
                 else
                 {
                     lbIniciarSession.Text = "Iniciar sessión";
+                    lblNombreDelUsuario.Text = "";
                 }
             }
             else
@@ -33,10 +38,13 @@ namespace VentaDirectaYPorCatalogo
                 if (Session["Session"] != null && Session["Usuario"] != null)
                 {
                     lbIniciarSession.Text = "Cerrar sessión";
+                    var usuario = (Usuario)Session["Usuario"];
+                    lblNombreDelUsuario.Text = usuario.User;
                 }
                 else
                 {
                     lbIniciarSession.Text = "Iniciar sessión";
+                    lblNombreDelUsuario.Text = "";
                 }
             }
         }
@@ -44,9 +52,10 @@ namespace VentaDirectaYPorCatalogo
         protected void BtnIniciar_Click(object sender, EventArgs e)
         {
             LinkButton lbIniciarSession = (LinkButton)Master.FindControl("lbIniciarSession");
+            lblNombreDelUsuario = (LinkButton)Master.FindControl("lblNombreDelUsuario");
             try
             {
-                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text).ToLower());
+                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text).ToLower(), new Persona());
                 OrganizarUsuario organizacionUsuario = new OrganizarUsuario();
                 string rol = organizacionUsuario.IniciarSession(usuario);
                 if(rol != "desconocido")
@@ -56,6 +65,8 @@ namespace VentaDirectaYPorCatalogo
                     Session["Session"] = rol;
                     organizacionUsuario.BuscarUsuario(ref usuario);
                     Session["Usuario"] = usuario;
+                    lblNombreDelUsuario.Text = usuario.User;
+                    Response.Redirect("Default.aspx");
                 }
                 else
                 {

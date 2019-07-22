@@ -11,4 +11,16 @@
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-default" OnClick="btnBuscar_Click"/>
         </div>
     </div>
+    <br />
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateSelectButton="true" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged">
+                <Columns>
+                </Columns>
+                <EmptyDataTemplate>
+                    No hay registros
+                </EmptyDataTemplate>
+            </asp:GridView>
+        </div>
+    </div>
 </asp:Content>

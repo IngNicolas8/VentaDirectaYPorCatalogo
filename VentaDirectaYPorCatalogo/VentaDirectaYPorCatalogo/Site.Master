@@ -60,6 +60,8 @@
                     </ul>
                 </div>
                 <div class="navbar-right">
+                    <asp:LinkButton ID="lblNombreDelUsuario" runat="server"></asp:LinkButton>
+                    <br />
                     <asp:LinkButton ID="lbIniciarSession" runat="server" OnClick="LbIniciarSession_Click">Iniciar sessión</asp:LinkButton>
                 </div>
             </div>

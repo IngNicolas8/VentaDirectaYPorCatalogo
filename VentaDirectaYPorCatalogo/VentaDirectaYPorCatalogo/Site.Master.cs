@@ -24,6 +24,7 @@ namespace VentaDirectaYPorCatalogo
             {
                 Session["Session"] = null;
                 lbIniciarSession.Text = "Iniciar sessión";
+                lblNombreDelUsuario.Text = "";
             }
         }
     }

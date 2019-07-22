@@ -1,5 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegistrarUsuario.aspx.cs" Inherits="VentaDirectaYPorCatalogo.RegistrarUsuario" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+     <div class="row">
+        <div class="col-md-offset-4 col-md-1">
+            <asp:Label ID="lblNombre" runat="server" Text="Nombre"></asp:Label>
+        </div>
+        <div class="col-md-3">
+            <asp:TextBox ID="txtNombre" runat="server" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+            <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="Ingrese Nombre" ForeColor="Red" ControlToValidate="txtNombre" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator><br />
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-offset-4 col-md-1">
+            <asp:Label ID="lblApellido" runat="server" Text="Apellido"></asp:Label>
+        </div>
+        <div class="col-md-3">
+            <asp:TextBox ID="txtApellido" runat="server" TextMode="SingleLine" CssClass="form-control"></asp:TextBox>
+        </div>
+        <div class="col-md-4">
+            <asp:RequiredFieldValidator ID="rfvApellido" runat="server" ErrorMessage="Ingrese Apellido" ForeColor="Red" ControlToValidate="txtApellido" Display="Dynamic" ValidationGroup="1"></asp:RequiredFieldValidator><br />
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-offset-4 col-md-1">
             <asp:Label ID="lblUsuario" runat="server" Text="Usuario"></asp:Label>

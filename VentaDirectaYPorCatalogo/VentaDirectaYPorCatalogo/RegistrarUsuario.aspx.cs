@@ -13,18 +13,23 @@ namespace VentaDirectaYPorCatalogo
     public partial class RegistrarUsuario : System.Web.UI.Page
     {
         LinkButton lbIniciarSession;
+        LinkButton lblNombreDelUsuario;
         protected void Page_Load(object sender, EventArgs e)
         {
             lbIniciarSession = (LinkButton)Master.FindControl("lbIniciarSession");
+            lblNombreDelUsuario = (LinkButton)Master.FindControl("lblNombreDelUsuario");
             if (!Page.IsPostBack)
             {
-                if(Session["Session"] != null && Session["Usuario"] != null)
+                if (Session["Session"] != null && Session["Usuario"] != null)
                 {
                     lbIniciarSession.Text = "Cerrar sessión";
+                    var usuario = (Usuario)Session["Usuario"];
+                    lblNombreDelUsuario.Text = usuario.User;
                 }
                 else
                 {
                     lbIniciarSession.Text = "Iniciar sessión";
+                    lblNombreDelUsuario.Text = "";
                 }
             }
             else
@@ -32,10 +37,13 @@ namespace VentaDirectaYPorCatalogo
                 if (Session["Session"] != null && Session["Usuario"] != null)
                 {
                     lbIniciarSession.Text = "Cerrar sessión";
+                    var usuario = (Usuario)Session["Usuario"];
+                    lblNombreDelUsuario.Text = usuario.User;
                 }
                 else
                 {
                     lbIniciarSession.Text = "Iniciar sessión";
+                    lblNombreDelUsuario.Text = "";
                 }
             }
         }
@@ -49,15 +57,31 @@ namespace VentaDirectaYPorCatalogo
         {
             try
             {
-                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text));
+                Persona persona = new Persona();
+                persona.Apellido = txtApellido.Text;
+                persona.Nombre = txtNombre.Text;
+                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text), persona);
                 OrganizarUsuario organizarUsuario = new OrganizarUsuario();
                 organizarUsuario.RegistraUsuario(usuario);
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario se registro correctamente');", true);
+                Limpiar();
             }
             catch(Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('" + ex.Message + "');", true);
             }
+        }
+
+        /// <summary>
+        /// Limpia los campos
+        /// </summary>
+        private void Limpiar()
+        {
+            txtApellido.Text = "";
+            txtConfirmarContraseña.Text = "";
+            txtContraseña.Text = "";
+            txtNombre.Text = "";
+            txtUsuario.Text = "";
         }
 
         /// <summary>

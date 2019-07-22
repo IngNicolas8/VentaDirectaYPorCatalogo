@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using Clases;
 
 namespace BaseDeDatos
 {
@@ -16,18 +17,21 @@ namespace BaseDeDatos
         /// <param name="contraseña">contraseña</param>
         public void RegistraUsuario(Usuario usuario)
         {
+            SqlCommand comando = new SqlCommand();
             try
             {
                 //Defino un SqlComand y llamo al metodo conectar para que se conecte y me devuelva la conexion
-                SqlCommand comando = new SqlCommand();
                 ClaseConexion.Conectar();
+                OrganizarPersona organizarPersona = new OrganizarPersona();
                 comando.Connection = ClaseConexion.Conexion;
+                SqlTransaction transaccion = comando.Connection.BeginTransaction();
+                comando.Transaction = transaccion;
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = "INSERT INTO Usuarios (usuario, contraseña) VALUES(@usuario, @contraseña); ";
                 comando.Parameters.AddWithValue("@usuario", usuario.User);
                 comando.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
                 comando.ExecuteNonQuery();
-                comando.Connection.Close();
+                organizarPersona.RegistrarPersona(usuario, transaccion, comando.Connection);
             }
             catch (SqlException)
             {
@@ -110,6 +114,43 @@ namespace BaseDeDatos
             {
                 ClaseConexion.Conexion.Close();
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Busca los usuarios
+        /// </summary>
+        /// <returns>retorna los usuarios</returns>
+        public DataTable BuscarUsuarios(Usuario usuario)
+        {
+            try
+            {
+                //Defino un SqlComand y llamo al metodo conectar para que se conecte y me devuelva la conexion
+                SqlCommand comando = new SqlCommand();
+                ClaseConexion.Conectar();
+                comando.Connection = ClaseConexion.Conexion;
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = "SELECT usuario, rol from Usuarios where usuario like @usuario";
+                comando.Parameters.AddWithValue("@usuario", "%" + usuario.User + "%");
+                SqlDataAdapter da = new SqlDataAdapter(comando);
+                DataSet ds = new DataSet();
+                da.Fill(ds, "Usuarios");
+                if (ds.Tables["Usuarios"].Rows.Count != 0)
+                {
+                    List<Usuario> usuarios = new List<Usuario>();
+                    DataTable tabla = ds.Tables["Usuarios"];
+                    return tabla;
+                }
+                else
+                {
+                    comando.Connection.Close();
+                    return new DataTable();
+                }
+            }
+            catch (SqlException ex)
+            {
+                ClaseConexion.Conexion.Close();
+                return new DataTable();
             }
         }
     }
