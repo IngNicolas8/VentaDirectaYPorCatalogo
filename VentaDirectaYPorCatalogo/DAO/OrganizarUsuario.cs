@@ -153,5 +153,64 @@ namespace BaseDeDatos
                 return new DataTable();
             }
         }
+
+        internal static void BorrarUsuario(Usuario usuario, SqlTransaction transaccion, SqlConnection conexion)
+        {
+            SqlCommand comando = new SqlCommand();
+            try
+            {
+                //Defino un SqlComand y llamo al metodo conectar para que se conecte y me devuelva la conexion
+                comando.Connection = conexion;
+                comando.Transaction = transaccion;
+                comando.CommandText = "DELETE FROM Usuarios WHERE usuario = @Usuario;";
+                comando.Parameters.AddWithValue("@Usuario", usuario.User);
+                comando.ExecuteNonQuery();
+                comando.Transaction.Commit();
+                comando.Connection.Close();
+            }
+            catch (SqlException ex)
+            {
+                comando.Transaction.Rollback();
+                throw new Exception();
+            }
+        }
+
+        /// <summary>
+        /// Modificar un usuario
+        /// </summary>
+        /// <param name="usuario">usario</param>
+        public void ModificarUsuario(Usuario usuario)
+        {
+            SqlCommand comando = new SqlCommand();
+            try
+            {
+                //Defino un SqlComand y llamo al metodo conectar para que se conecte y me devuelva la conexion
+                ClaseConexion.Conectar();
+                OrganizarPersona organizarPersona = new OrganizarPersona();
+                comando.Connection = ClaseConexion.Conexion;
+                SqlTransaction transaccion = comando.Connection.BeginTransaction();
+                comando.Transaction = transaccion;
+                comando.CommandType = CommandType.Text;
+                StringBuilder sQL = new StringBuilder();
+                sQL.Append("UPDATE Usuarios ");
+                sQL.Append("SET rol = 'Admin'");
+                if (usuario.Contraseña != null)
+                {
+                    sQL.Append(" ,contraseña = @contraseña");
+                }
+                sQL.Append(" WHERE usuario = @usuario;");
+                comando.CommandText = sQL.ToString();
+                comando.Parameters.AddWithValue("@usuario", usuario.User);
+                if (usuario.Contraseña != null)
+                    comando.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
+                comando.ExecuteNonQuery();
+                organizarPersona.ModificarPersona(usuario, transaccion, comando.Connection);
+            }
+            catch (SqlException ex)
+            {
+                ClaseConexion.Conexion.Close();
+                throw new Exception();
+            }
+        }
     }
 }

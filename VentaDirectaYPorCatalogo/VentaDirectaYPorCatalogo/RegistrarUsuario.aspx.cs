@@ -31,6 +31,20 @@ namespace VentaDirectaYPorCatalogo
                     lbIniciarSession.Text = "Iniciar sessión";
                     lblNombreDelUsuario.Text = "";
                 }
+                if (Session["UsuarioAModificar"] == null)
+                {
+                    Page.Title = "Registrar Usuario";
+                    titulo.InnerText = "Registrar Usuario";
+                }
+                else
+                {
+                    Page.Title = "Modificar o Eliminar Usuario";
+                    titulo.InnerText = "Modificar o Eliminar Usuario";
+                    CargarDatos();
+                    rfvContraseña.Enabled = false;
+                    rfvConfirmarContraseña.Enabled = false;
+                    btnBorrar.Visible = true;
+                }
             }
             else
             {
@@ -48,6 +62,26 @@ namespace VentaDirectaYPorCatalogo
             }
         }
 
+        /// <summary>
+        /// Carga los datos personales en los controles
+        /// </summary>
+        private void CargarDatos()
+        {
+            Usuario usuarioAModificarOEliminar = new Usuario();
+            OrganizarUsuario organizarUsuario = new OrganizarUsuario();
+            OrganizarPersona organizarPersona = new OrganizarPersona();
+            usuarioAModificarOEliminar.User = (string)Session["usuarioAModificar"];
+            if(organizarUsuario.BuscarUsuario(ref usuarioAModificarOEliminar))
+            {
+                organizarPersona.BuscarPersona(ref usuarioAModificarOEliminar);
+            }
+            txtUsuario.ReadOnly = true;
+            txtUsuario.Text = usuarioAModificarOEliminar.User;
+            txtNombre.Text = usuarioAModificarOEliminar.Persona.Nombre;
+            txtApellido.Text = usuarioAModificarOEliminar.Persona.Apellido;
+            Session["idPersona"] = usuarioAModificarOEliminar.Persona.Id;
+        }
+
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
@@ -55,20 +89,49 @@ namespace VentaDirectaYPorCatalogo
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
-            try
+            if (Session["usuarioAModificar"] == null)
             {
-                Persona persona = new Persona();
-                persona.Apellido = txtApellido.Text;
-                persona.Nombre = txtNombre.Text;
-                Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text), persona);
-                OrganizarUsuario organizarUsuario = new OrganizarUsuario();
-                organizarUsuario.RegistraUsuario(usuario);
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario se registro correctamente');", true);
-                Limpiar();
+                try
+                {
+                    Persona persona = new Persona();
+                    persona.Apellido = txtApellido.Text;
+                    persona.Nombre = txtNombre.Text;
+                    Usuario usuario = new Usuario(txtUsuario.Text, CreateMD5(txtContraseña.Text), persona);
+                    OrganizarUsuario organizarUsuario = new OrganizarUsuario();
+                    organizarUsuario.RegistraUsuario(usuario);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario se registro correctamente');", true);
+                    Limpiar();
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('" + ex.Message + "');", true);
+                }
             }
-            catch(Exception ex)
+            else
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('" + ex.Message + "');", true);
+                try
+                {
+                    Usuario usuario = new Usuario();
+                    OrganizarUsuario organizarUsuario = new OrganizarUsuario();
+                    usuario.User = (string)Session["usuarioAModificar"];
+                    usuario.Persona = new Persona();
+                    usuario.Persona.Nombre = txtNombre.Text;
+                    usuario.Persona.Apellido = txtApellido.Text;
+                    usuario.Persona.Id = (int)Session["idPersona"];
+                    if (txtContraseña.Text != "" && txtConfirmarContraseña.Text != "")
+                    {
+                        usuario.Contraseña = CreateMD5(txtContraseña.Text);
+                    }
+                    organizarUsuario.ModificarUsuario(usuario);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario se actualizo correctamente');", true);
+                    Limpiar();
+                    Page.Title = "Registrar Usuario";
+                    titulo.InnerText = "Registrar Usuario";
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('" + ex.Message + "');", true);
+                }
             }
         }
 
@@ -82,6 +145,7 @@ namespace VentaDirectaYPorCatalogo
             txtContraseña.Text = "";
             txtNombre.Text = "";
             txtUsuario.Text = "";
+            Session["usuarioAModificar"] = null;
         }
 
         /// <summary>
@@ -105,6 +169,20 @@ namespace VentaDirectaYPorCatalogo
                 }
                 return sb.ToString();
             }
+        }
+
+        protected void btnBorrar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario.User = (string)Session["usuarioAModificar"];
+            usuario.Persona = new Persona();
+            usuario.Persona.Id = (int)Session["idPersona"];
+            OrganizarPersona.BorrarPersona(usuario);
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El usuario se Borro correctamente');", true);
+            Limpiar();
+            Page.Title = "Registrar Usuario";
+            titulo.InnerText = "Registrar Usuario";
+            btnBorrar.Visible = false;
         }
     }
 }

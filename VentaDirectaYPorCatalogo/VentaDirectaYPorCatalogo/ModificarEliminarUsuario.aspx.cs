@@ -31,6 +31,7 @@ namespace VentaDirectaYPorCatalogo
                     lbIniciarSession.Text = "Iniciar sessión";
                     lblNombreDelUsuario.Text = "";
                 }
+                Page.Title = "Modificar o Eliminar Usuario";
             }
             else
             {
@@ -91,6 +92,7 @@ namespace VentaDirectaYPorCatalogo
         protected void gvUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session["UsuarioAModificar"] = gvUsuarios.SelectedValue.ToString();
+            Response.Redirect("RegistrarUsuario.aspx");
         }
     }
 }

@@ -13,6 +13,15 @@ namespace VentaDirectaYPorCatalogo {
     public partial class RegistrarUsuario {
         
         /// <summary>
+        /// Control titulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl titulo;
+        
+        /// <summary>
         /// Control lblNombre.
         /// </summary>
         /// <remarks>
@@ -182,6 +191,15 @@ namespace VentaDirectaYPorCatalogo {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAceptar;
+        
+        /// <summary>
+        /// Control btnBorrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBorrar;
         
         /// <summary>
         /// Control btnCancelar.
