@@ -56,6 +56,7 @@ namespace VentaDirectaYPorCatalogo
                 Usuario usuario = new Usuario();
                 OrganizarUsuario organizacionUsuario = new OrganizarUsuario();
                 usuario.User = txtUsuarioABuscar.Text;
+                Limpiar();
                 DataTable usuarios = organizacionUsuario.BuscarUsuarios(usuario);
                 if (usuarios.Rows.Count != 0)
                 {

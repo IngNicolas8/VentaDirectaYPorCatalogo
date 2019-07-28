@@ -40,25 +40,42 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar  navbar-fixed-top navbar-light">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header navbar-light">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
+                    <a class="navbar-brand" runat="server" href="~/">Venta directa y por catalogo</a>
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Inicio</a></li>
-                        <li><a runat="server" href="~/About">Acerca de</a></li>
-                        <li><a runat="server" href="~/Contact">Contacto</a></li>
-                        <li><a runat="server" href="~/RegistrarUsuario.aspx">Registrar usuario</a></li>
-                        <li><a runat="server" href="~/ModificarEliminarUsuario.aspx">Modificar Usuario</a></li>
-                        <li><a runat="server" href="RegistrarTipoDeProducto.aspx">Registrar Tipo De Producto</a></li>
-                        <li><a runat="server" href="ModificarOBorrarTipoDeProducto.aspx">Modificar Tipo De Producto</a></li>
+                <div class="navbar-collapse collapse navbar-light">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a runat="server" href="~/" class="nav-link active">Inicio</a></li>
+                        <li class="nav-item"><a runat="server" href="~/About" class="nav-link active">Acerca de</a></li>
+                        <li class="nav-item"><a runat="server" href="~/Contact" class="nav-link active">Contacto</a></li>
+                        <li class="nav-item">
+                            <a runat="server" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Usuarios</a>
+                            <div class="dropdown-menu">
+                                <a runat="server" href="~/RegistrarUsuario.aspx" class="dropdown-item">Registrar usuario</a>
+                                <a runat="server" href="~/ModificarEliminarUsuario.aspx" class="dropdown-item">Modificar Usuario</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a runat="server" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Tipos de Producto</a>
+                            <div class="dropdown-menu">
+                                <a runat="server" href="RegistrarTipoDeProducto.aspx" class="dropdown-item">Registrar Tipo De Producto</a>
+                                <a runat="server" href="ModificarOBorrarTipoDeProducto.aspx" class="dropdown-item">Modificar Tipo De Producto</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a runat="server" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Catalogos</a>
+                            <div class="dropdown-menu">
+                                <a runat="server" href="RegistrarCatalogo.aspx" class="dropdown-item">Registrar Catalogo</a>
+                                <a runat="server" href="ModificarOBorrarCatalogo.aspx" class="dropdown-item">Modificar Catalogo</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar-right">

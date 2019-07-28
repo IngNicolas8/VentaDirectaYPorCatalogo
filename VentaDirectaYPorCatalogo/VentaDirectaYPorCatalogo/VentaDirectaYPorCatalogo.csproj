@@ -161,7 +161,9 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="IniciarSession.aspx" />
     <Content Include="ModificarEliminarUsuario.aspx" />
+    <Content Include="ModificarOBorrarCatalogo.aspx" />
     <Content Include="ModificarOBorrarTipoDeProducto.aspx" />
+    <Content Include="RegistrarCatalogo.aspx" />
     <Content Include="RegistrarTipoDeProducto.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -239,6 +241,13 @@
     <Compile Include="ModificarEliminarUsuario.aspx.designer.cs">
       <DependentUpon>ModificarEliminarUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModificarOBorrarCatalogo.aspx.cs">
+      <DependentUpon>ModificarOBorrarCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarOBorrarCatalogo.aspx.designer.cs">
+      <DependentUpon>ModificarOBorrarCatalogo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModificarOBorrarTipoDeProducto.aspx.cs">
       <DependentUpon>ModificarOBorrarTipoDeProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,6 +256,13 @@
       <DependentUpon>ModificarOBorrarTipoDeProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarCatalogo.aspx.cs">
+      <DependentUpon>RegistrarCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarCatalogo.aspx.designer.cs">
+      <DependentUpon>RegistrarCatalogo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarTipoDeProducto.aspx.cs">
       <DependentUpon>RegistrarTipoDeProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

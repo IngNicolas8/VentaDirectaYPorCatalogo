@@ -56,6 +56,8 @@ namespace VentaDirectaYPorCatalogo
             {
                 TipoDeProducto tipoDeProducto = new TipoDeProducto();
                 OrganizarTipoDeProducto organizarTipoDeProducto = new OrganizarTipoDeProducto();
+                tipoDeProducto.Nombre = txNombre.Text;
+                Limpiar();
                 DataTable tiposDeProductos = organizarTipoDeProducto.BuscarTiposDeProducto(tipoDeProducto);
                 if (tiposDeProductos.Rows.Count != 0)
                 {
