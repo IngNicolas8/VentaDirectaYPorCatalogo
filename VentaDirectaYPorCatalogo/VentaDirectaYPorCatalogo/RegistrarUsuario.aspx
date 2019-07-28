@@ -71,7 +71,7 @@
         <div class="col-md-offset-5 col-md-1">
             <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptar_Click" CssClass="btn btn-default" ValidationGroup="1" />
         </div>
-        <div class="col-md-1">
+        <div class="col-md-1" runat="server" visible="false" id="divBorrar">
             <asp:Button ID="btnBorrar" runat="server" Text="Borrar" OnClick="btnBorrar_Click" CssClass="btn btn-default" Visible="false" />
         </div>
         <div class="col-md-1">

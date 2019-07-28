@@ -14,6 +14,7 @@ namespace VentaDirectaYPorCatalogo
     {
         LinkButton lbIniciarSession;
         LinkButton lblNombreDelUsuario;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lbIniciarSession = (LinkButton)Master.FindControl("lbIniciarSession");
@@ -44,6 +45,7 @@ namespace VentaDirectaYPorCatalogo
                     rfvContraseña.Enabled = false;
                     rfvConfirmarContraseña.Enabled = false;
                     btnBorrar.Visible = true;
+                    divBorrar.Visible = true;
                 }
             }
             else
@@ -84,6 +86,7 @@ namespace VentaDirectaYPorCatalogo
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
+            Limpiar();
             Response.Redirect("Default.aspx");
         }
 
@@ -146,6 +149,8 @@ namespace VentaDirectaYPorCatalogo
             txtNombre.Text = "";
             txtUsuario.Text = "";
             Session["usuarioAModificar"] = null;
+            btnBorrar.Visible = false;
+            divBorrar.Visible = false;
         }
 
         /// <summary>
@@ -182,7 +187,6 @@ namespace VentaDirectaYPorCatalogo
             Limpiar();
             Page.Title = "Registrar Usuario";
             titulo.InnerText = "Registrar Usuario";
-            btnBorrar.Visible = false;
         }
     }
 }

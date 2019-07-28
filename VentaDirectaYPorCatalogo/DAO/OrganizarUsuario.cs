@@ -137,7 +137,6 @@ namespace BaseDeDatos
                 da.Fill(ds, "Usuarios");
                 if (ds.Tables["Usuarios"].Rows.Count != 0)
                 {
-                    List<Usuario> usuarios = new List<Usuario>();
                     DataTable tabla = ds.Tables["Usuarios"];
                     return tabla;
                 }

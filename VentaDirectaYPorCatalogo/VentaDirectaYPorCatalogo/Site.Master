@@ -57,6 +57,8 @@
                         <li><a runat="server" href="~/Contact">Contacto</a></li>
                         <li><a runat="server" href="~/RegistrarUsuario.aspx">Registrar usuario</a></li>
                         <li><a runat="server" href="~/ModificarEliminarUsuario.aspx">Modificar Usuario</a></li>
+                        <li><a runat="server" href="RegistrarTipoDeProducto.aspx">Registrar Tipo De Producto</a></li>
+                        <li><a runat="server" href="ModificarOBorrarTipoDeProducto.aspx">Modificar Tipo De Producto</a></li>
                     </ul>
                 </div>
                 <div class="navbar-right">
