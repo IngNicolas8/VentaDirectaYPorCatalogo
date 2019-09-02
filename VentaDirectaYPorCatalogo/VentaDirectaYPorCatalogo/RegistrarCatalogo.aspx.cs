@@ -43,6 +43,8 @@ namespace VentaDirectaYPorCatalogo
                     CargarDatos();
                     btnBorrar.Visible = true;
                     divBorrar.Visible = true;
+                    txtFecha.ReadOnly = true;
+                    rfvFecha.Enabled = false;
                 }
             }
             else
@@ -90,7 +92,6 @@ namespace VentaDirectaYPorCatalogo
                     Catalogo catalogo = new Catalogo();
                     OrganizarCatalogo organizarCatalogo = new OrganizarCatalogo();
                     catalogo.IdCatalogo = (int)Session["idCatalogo"];
-                    catalogo.Fecha = Convert.ToDateTime(txtFecha.Text);
                     catalogo.Nombre = txtNombre.Text;
                     catalogo.Temporada = txtTemporada.Text;
                     organizarCatalogo.ModificarCatalogos(catalogo);
@@ -126,6 +127,8 @@ namespace VentaDirectaYPorCatalogo
             Session["catalogoAModificar"] = null;
             btnBorrar.Visible = false;
             divBorrar.Visible = false;
+            txtFecha.ReadOnly = true;
+            rfvFecha.Enabled = true;
         }
 
         protected void btnBorrar_Click(object sender, EventArgs e)
@@ -133,7 +136,7 @@ namespace VentaDirectaYPorCatalogo
             Catalogo catalogo = new Catalogo();
             catalogo.Nombre = (string)Session["catalogoAModificar"];
             catalogo.IdCatalogo = (int)Session["idCatalogo"];
-            OrganizarCatalogo.BorrarTipoDeProducto(catalogo);
+            OrganizarCatalogo.BorrarCatalogo(catalogo);
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "Mensajes", "alert('El catalogo se Borro correctamente');", true);
             Limpiar();
             Page.Title = "Registrar catalogo";

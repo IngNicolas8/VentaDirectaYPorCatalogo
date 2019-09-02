@@ -78,7 +78,7 @@ namespace BaseDeDatos
                 ClaseConexion.Conectar();
                 comando.Connection = ClaseConexion.Conexion;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT descripcion, nombre from TipoDeProducto where nombre like @Nombre";
+                comando.CommandText = "SELECT idTipoDeProducto as codigo, descripcion, nombre from TipoDeProducto where nombre like @Nombre";
                 comando.Parameters.AddWithValue("@Nombre", "%" + tipoDeProducto.Nombre + "%");
                 SqlDataAdapter da = new SqlDataAdapter(comando);
                 DataSet ds = new DataSet();

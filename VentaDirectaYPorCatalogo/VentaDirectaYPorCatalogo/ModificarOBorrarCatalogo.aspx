@@ -5,7 +5,7 @@
             <asp:Label ID="lblFecha" runat="server" Text="Fecha"></asp:Label>
         </div>
         <div class="col-md-2">
-            <asp:Calendar ID="cFecha" runat="server"></asp:Calendar>
+            <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
         </div>
         <div class="col-md-1">
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-default" OnClick="btnBuscar_Click" />
@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-md-offset-4 col-md-1">
-            <asp:Label ID="lblNombre" runat="server" Text="Tipo de producto"></asp:Label>
+            <asp:Label ID="lblNombre" runat="server" Text="Nombre"></asp:Label>
         </div>
         <div class="col-md-3">
             <asp:TextBox ID="txNombre" runat="server" CssClass="form-control"></asp:TextBox>

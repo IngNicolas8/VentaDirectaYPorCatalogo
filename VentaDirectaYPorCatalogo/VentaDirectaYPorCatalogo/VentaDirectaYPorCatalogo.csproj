@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AdministrarProductosPorCatalogo.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -162,8 +163,10 @@
     <Content Include="IniciarSession.aspx" />
     <Content Include="ModificarEliminarUsuario.aspx" />
     <Content Include="ModificarOBorrarCatalogo.aspx" />
+    <Content Include="ModificarOBorrarProducto.aspx" />
     <Content Include="ModificarOBorrarTipoDeProducto.aspx" />
     <Content Include="RegistrarCatalogo.aspx" />
+    <Content Include="RegistrarProducto.aspx" />
     <Content Include="RegistrarTipoDeProducto.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -201,6 +204,13 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarProductosPorCatalogo.aspx.cs">
+      <DependentUpon>AdministrarProductosPorCatalogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarProductosPorCatalogo.aspx.designer.cs">
+      <DependentUpon>AdministrarProductosPorCatalogo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -248,6 +258,13 @@
     <Compile Include="ModificarOBorrarCatalogo.aspx.designer.cs">
       <DependentUpon>ModificarOBorrarCatalogo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModificarOBorrarProducto.aspx.cs">
+      <DependentUpon>ModificarOBorrarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarOBorrarProducto.aspx.designer.cs">
+      <DependentUpon>ModificarOBorrarProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModificarOBorrarTipoDeProducto.aspx.cs">
       <DependentUpon>ModificarOBorrarTipoDeProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +279,13 @@
     </Compile>
     <Compile Include="RegistrarCatalogo.aspx.designer.cs">
       <DependentUpon>RegistrarCatalogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarProducto.aspx.cs">
+      <DependentUpon>RegistrarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarProducto.aspx.designer.cs">
+      <DependentUpon>RegistrarProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistrarTipoDeProducto.aspx.cs">
       <DependentUpon>RegistrarTipoDeProducto.aspx</DependentUpon>
@@ -301,6 +325,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="imagenes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

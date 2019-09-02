@@ -20,7 +20,9 @@ namespace VentaDirectaYPorCatalogo
                             "~/Scripts/WebForms/GridView.js",
                             "~/Scripts/WebForms/DetailsView.js",
                             "~/Scripts/WebForms/TreeView.js",
-                            "~/Scripts/WebForms/WebParts.js"));
+                            "~/Scripts/WebForms/WebParts.js",
+                            "~/Scripts/WebForms/bootstrap.js",
+                            "~/Scripts/jquery-3.3.1.intellisense.js"));
 
             // El orden es muy importante para el funcionamiento de estos archivos ya que tienen dependencias explícitas
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(

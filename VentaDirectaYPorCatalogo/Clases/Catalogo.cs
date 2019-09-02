@@ -10,6 +10,7 @@ namespace Clases
         private DateTime fecha;
         private string temporada;
         private string nombre;
+        private List<Producto> productos;
 
         /// <summary>
         /// Id del catalogo
@@ -30,5 +31,10 @@ namespace Clases
         /// Nombre del catalogo
         /// </summary>
         public string Nombre { get => nombre; set => nombre = value; }
+
+        /// <summary>
+        /// Productos de un catalogo
+        /// </summary>
+        public List<Producto> Productos { get => productos; set => productos = value; }
     }
 }

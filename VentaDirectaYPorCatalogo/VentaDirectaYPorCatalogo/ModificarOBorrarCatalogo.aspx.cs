@@ -57,7 +57,8 @@ namespace VentaDirectaYPorCatalogo
                 Catalogo catalogo = new Catalogo();
                 OrganizarCatalogo organizarCatalogo = new OrganizarCatalogo();
                 catalogo.Nombre = txNombre.Text;
-                catalogo.Fecha = cFecha.SelectedDate;
+                if(txtFecha.Text != "")
+                    catalogo.Fecha = Convert.ToDateTime(txtFecha.Text);
                 Limpiar();
                 DataTable catalogos = organizarCatalogo.BuscarCatalogos(catalogo);
                 if (catalogos.Rows.Count != 0)
@@ -88,7 +89,7 @@ namespace VentaDirectaYPorCatalogo
             gvCatalogo.DataSource = null;
             gvCatalogo.DataBind();
             txNombre.Text = "";
-            cFecha.SelectedDate = DateTime.Now;
+            txtFecha.Text = Convert.ToString(DateTime.Now);
         }
 
         protected void gvCatalog_SelectedIndexChanged(object sender, EventArgs e)
