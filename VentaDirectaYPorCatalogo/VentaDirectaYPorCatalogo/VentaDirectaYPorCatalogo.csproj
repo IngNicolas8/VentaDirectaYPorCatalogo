@@ -138,6 +138,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AdministrarProductosPorCatalogo.aspx" />
+    <Content Include="ConsultarProducto.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -220,6 +221,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ConsultarProducto.aspx.cs">
+      <DependentUpon>ConsultarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConsultarProducto.aspx.designer.cs">
+      <DependentUpon>ConsultarProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

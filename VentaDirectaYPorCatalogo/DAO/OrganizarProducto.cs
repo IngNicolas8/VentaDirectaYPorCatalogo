@@ -26,9 +26,9 @@ namespace BaseDeDatos
                 SqlTransaction transaccion = comando.Connection.BeginTransaction();
                 comando.Transaction = transaccion;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "INSERT INTO Producto (nombre, tipoProducto, imagen, precio) VALUES(@Nombre, @TipoProductp @Imagen, @Precio); ";
+                comando.CommandText = "INSERT INTO Producto (nombre, tipoProducto, imagen, precio) VALUES(@Nombre, @TipoProducto, @Imagen, @Precio); ";
                 comando.Parameters.AddWithValue("@Nombre", producto.Nombre);
-                comando.Parameters.AddWithValue("@TipoProducto", producto.TipoDeProducto);
+                comando.Parameters.AddWithValue("@TipoProducto", producto.TipoDeProducto.IdTipoDeProducto);
                 comando.Parameters.AddWithValue("@Imagen", producto.Imagen);
                 comando.Parameters.AddWithValue("@Precio", producto.Precio);
                 comando.ExecuteNonQuery();
@@ -71,6 +71,10 @@ namespace BaseDeDatos
                     producto.TipoDeProducto = new TipoDeProducto();
                     producto.TipoDeProducto.IdTipoDeProducto = Convert.ToInt32(ds.Tables["Producto"].Rows[0]["tipoProducto"].ToString());
                     producto.Precio = float.Parse(ds.Tables["Producto"].Rows[0]["precio"].ToString());
+                    if (ds.Tables["Producto"].Rows[0]["imagen"] != null)
+                        producto.Imagen = ds.Tables["Producto"].Rows[0]["imagen"].ToString();
+                    else
+                        producto.Imagen = "";
                     comando.Connection.Close();
                 }
                 else
@@ -196,26 +200,15 @@ namespace BaseDeDatos
                 StringBuilder sQL = new StringBuilder();
                 sQL.Append("UPDATE Producto ");
                 sQL.Append("SET nombre = @Nombre, tipoProducto = @TipoDeProducto");
-                if (producto.Imagen != "")
-                {
-                    sQL.Append(", imagen = @Imagen");
-                    sQL.Append(", precio = @Precio ");
-                    sQL.Append(" WHERE idProducto = @IdProducto;");
-                    comando.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
-                    comando.Parameters.AddWithValue("@Nombre", producto.Nombre);
-                    comando.Parameters.AddWithValue("@TipoDeProducto", producto.TipoDeProducto);
-                    comando.Parameters.AddWithValue("@Imagen", producto.Imagen);
-                }
-                else
-                {
-                    sQL.Append(", precio = @Precio ");
-                    sQL.Append(" WHERE idProducto = @IdProducto;");
-                    comando.CommandText = sQL.ToString();
-                    comando.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
-                    comando.Parameters.AddWithValue("@Nombre", producto.Nombre);
-                    comando.Parameters.AddWithValue("@TipoDeProducto", producto.TipoDeProducto.IdTipoDeProducto);
-                    comando.Parameters.AddWithValue("@Precio", producto.Precio);
-                }
+                sQL.Append(", imagen = @Imagen");
+                sQL.Append(", precio = @Precio ");
+                sQL.Append(" WHERE idProducto = @IdProducto;");
+                comando.Parameters.AddWithValue("@IdProducto", producto.IdProducto);
+                comando.Parameters.AddWithValue("@Nombre", producto.Nombre);
+                comando.Parameters.AddWithValue("@TipoDeProducto", producto.TipoDeProducto.IdTipoDeProducto);
+                comando.Parameters.AddWithValue("@Imagen", producto.Imagen);
+                comando.Parameters.AddWithValue("@Precio", producto.Precio);
+                comando.CommandText = sQL.ToString();
                 comando.ExecuteNonQuery();
                 comando.Connection.Close();
             }

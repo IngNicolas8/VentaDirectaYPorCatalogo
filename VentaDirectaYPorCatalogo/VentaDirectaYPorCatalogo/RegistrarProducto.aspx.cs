@@ -17,7 +17,6 @@ namespace VentaDirectaYPorCatalogo
         LinkButton lblNombreDelUsuario;
         List<string> archivos = new List<string>();
         StringBuilder html = new StringBuilder();
-        DataTable tabla = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -48,10 +47,11 @@ namespace VentaDirectaYPorCatalogo
                     CargarDatos();
                     btnBorrar.Visible = true;
                     divBorrar.Visible = true;
-                    tabla = (DataTable)Session["imagenes"];
                     Mostrar();
                 }
                 CargarDatosEnComboTipoDeProducto();
+                if (Session["productoAModificar"] != null)
+                    CargarDatos();
             }
             else
             {
@@ -99,6 +99,13 @@ namespace VentaDirectaYPorCatalogo
             ddlTipoDeProducto.SelectedValue = productoAModificar.TipoDeProducto.IdTipoDeProducto.ToString();
             txtPrecio.Text = productoAModificar.Precio.ToString();
             Session["idProducto"] = productoAModificar.IdProducto;
+            List<string> archivos = new List<string>();
+            foreach (string archivo in productoAModificar.Imagen.Split(','))
+            {
+                if(archivo != "")
+                    archivos.Add(archivo);
+            }
+            Session["imagenes"] = archivos;
         }
 
         protected void BtnCancelar_Click(object sender, EventArgs e)
@@ -109,6 +116,10 @@ namespace VentaDirectaYPorCatalogo
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
+            if (Session["imagenes"] != null)
+            {
+                archivos = (List<string>)Session["imagenes"];
+            }
             if (Session["productoAModificar"] == null)
             {
                 try
@@ -119,8 +130,9 @@ namespace VentaDirectaYPorCatalogo
                     producto.TipoDeProducto.IdTipoDeProducto = Convert.ToInt32(ddlTipoDeProducto.SelectedValue);
                     if (archivos.Count != 0)
                     {
+                        producto.Imagen = "";
                         foreach (string archivo in archivos)
-                            producto.Imagen += archivo + ", ";
+                            producto.Imagen += archivo + ",";
                     }
                     else
                     {
@@ -150,8 +162,8 @@ namespace VentaDirectaYPorCatalogo
                     producto.Precio = float.Parse(txtPrecio.Text.ToString().Replace(",", "."));
                     if (archivos.Count != 0)
                     {
-                        foreach(string archivo in archivos)
-                            producto.Imagen += archivo + ", ";
+                        foreach (string archivo in archivos)
+                            producto.Imagen += archivo + ",";
                     }
                     else
                     {
@@ -181,6 +193,7 @@ namespace VentaDirectaYPorCatalogo
             Session["productoAModificar"] = null;
             btnBorrar.Visible = false;
             divBorrar.Visible = false;
+            imagenes.Controls.Clear();
         }
 
         protected void btnBorrar_Click(object sender, EventArgs e)
