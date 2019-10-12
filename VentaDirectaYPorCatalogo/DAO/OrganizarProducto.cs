@@ -129,7 +129,7 @@ namespace BaseDeDatos
         /// Busca los usuarios
         /// </summary>
         /// <returns>retorna los usuarios</returns>
-        public DataTable BuscarProductos(Producto producto)
+        public DataTable BuscarProductos(Producto producto, float? precioDesde, float? precioHasta, string orden)
         {
             try
             {
@@ -138,8 +138,36 @@ namespace BaseDeDatos
                 ClaseConexion.Conectar();
                 comando.Connection = ClaseConexion.Conexion;
                 comando.CommandType = CommandType.Text;
-                comando.CommandText = "SELECT idProducto as Codigo, nombre from Producto where nombre like @Nombre";
+                StringBuilder sQL = new StringBuilder();
+                sQL.Append("SELECT p.idProducto as Codigo, p.nombre, p.precio, p.imagen from Producto p ");
+                if(producto.Catalogo != null)
+                {
+                    sQL.Append(" JOIN ProductosXCatalogo p1 ON p.idProducto = p1.idProducto ");
+                }
+                sQL.Append("where p.nombre like @Nombre ");
                 comando.Parameters.AddWithValue("@Nombre", "%" + producto.Nombre + "%");
+                if(producto.Catalogo != null){
+                    sQL.Append("AND p1.idCatalogo = @IdCatalogo ");
+                    comando.Parameters.AddWithValue("@IdCatalogo", producto.Catalogo.IdCatalogo);
+                }
+                if (producto.TipoDeProducto != null)
+                {
+                    sQL.Append("AND tipoProducto = @TipoDeProducto ");
+                    comando.Parameters.AddWithValue("@TipoDeProducto", producto.TipoDeProducto.IdTipoDeProducto);
+                }
+                if (precioDesde != null)
+                {
+                    sQL.Append("AND precio >= @PrecioDesde ");
+                    comando.Parameters.AddWithValue("@PrecioDesde", precioDesde);
+                }
+                if (precioHasta != null)
+                {
+                    sQL.Append("AND precio <= @PrecioHasta ");
+                    comando.Parameters.AddWithValue("@PrecioHasta", precioHasta);
+                }
+                if (orden != "")
+                    sQL.Append("ORDER BY precio " + orden);
+                comando.CommandText = sQL.ToString();
                 SqlDataAdapter da = new SqlDataAdapter(comando);
                 DataSet ds = new DataSet();
                 da.Fill(ds, "Productos");

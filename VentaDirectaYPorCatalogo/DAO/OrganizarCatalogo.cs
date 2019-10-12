@@ -119,7 +119,7 @@ namespace BaseDeDatos
                 comando.Connection = ClaseConexion.Conexion;
                 comando.CommandType = CommandType.Text;
                 StringBuilder sQL = new StringBuilder();
-                sQL.Append("SELECT idCatalogo, anio, temporada, nombre from Catalogo ");
+                sQL.Append("SELECT idCatalogo as codigo, anio, temporada, nombre from Catalogo ");
                 if (!catalogo.Fecha.ToString().Equals("1/1/0001 00:00:00"))
                 {
                     sQL.Append("WHERE (nombre like @Nombre ");

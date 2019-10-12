@@ -58,7 +58,7 @@ namespace VentaDirectaYPorCatalogo
                 OrganizarProducto organizarProducto = new OrganizarProducto();
                 producto.Nombre = txNombre.Text;
                 Limpiar();
-                DataTable catalogos = organizarProducto.BuscarProductos(producto);
+                DataTable catalogos = organizarProducto.BuscarProductos(producto, null, null, "");
                 if (catalogos.Rows.Count != 0)
                 {
                     Limpiar();

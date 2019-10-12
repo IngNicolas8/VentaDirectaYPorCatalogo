@@ -79,6 +79,8 @@ namespace VentaDirectaYPorCatalogo
             var auxiliar = new TipoDeProducto();
             auxiliar.Nombre = "";
             DataTable tabla = organizarTipoDeProducto.BuscarTiposDeProducto(auxiliar);
+            ddlTipoDeProducto.AppendDataBoundItems = true;
+            ddlTipoDeProducto.Items.Add(new ListItem("-- Seleccione --", "0", true));
             ddlTipoDeProducto.DataSource = tabla;
             ddlTipoDeProducto.DataValueField = "codigo";
             ddlTipoDeProducto.DataTextField = "nombre";
@@ -194,6 +196,7 @@ namespace VentaDirectaYPorCatalogo
             btnBorrar.Visible = false;
             divBorrar.Visible = false;
             imagenes.Controls.Clear();
+            Session["imagenes"] = null;
         }
 
         protected void btnBorrar_Click(object sender, EventArgs e)
@@ -237,6 +240,9 @@ namespace VentaDirectaYPorCatalogo
             Mostrar();
         }
 
+        /// <summary>
+        /// Muestra las imagenes
+        /// </summary>
         public void Mostrar()
         {
             List<string> archivos = new List<string>();
